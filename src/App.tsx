@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Troussardle from './components/Troussardle';
 import { Player } from './Interface/IPlayer';
@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { isMobile } from 'react-device-detect';
 
 function App() {
   const [club, setClub] = useState<Team>();
@@ -25,6 +26,9 @@ function App() {
   const handleOpenPositionHint = () => setOpenPositionHint(true);
   const handleClosePositionHint = () => setOpenPositionHint(false);
 
+  //Test
+  const searchInput = useRef<any>(null)
+
   useEffect(() => {
     const fetchInfo = async () => {
       const info = await getRandomPlayer();
@@ -36,6 +40,12 @@ function App() {
     fetchInfo();
   }, []);
 
+  useEffect(() => {
+    if(isMobile){
+      searchInput?.current?.focus()
+    }
+  },[])
+
   if(!solution){
     return (
       <div>
@@ -46,10 +56,9 @@ function App() {
   
 
     return (
-      <div className="">
-        <div className="">
+      <div className="App">
+        <div className="App">
           <h1>Troussardle</h1>
-          {/* { solution && <Troussardle solution={solution}/> } */}
           <div className="row">
             <Button  variant="contained" color="secondary" onClick={handleOpenClubHint}>Reveal Club</Button>
             <Button  className="ml" variant="contained" color="secondary" onClick={handleOpenPositionHint}>Reveal Position</Button>
@@ -92,8 +101,6 @@ function App() {
         </div>
       </div>
     );
-  
-  
 }
 
 const style = {
