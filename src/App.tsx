@@ -56,15 +56,13 @@ function App() {
   
 
     return (
-      <div className="">
-        <div className="">
+      <div className="App" ref={searchInput}>
+        <div className="App">
           <h1>Troussardle</h1>
-          {/* { solution && <Troussardle solution={solution}/> } */}
           <div className="row">
             <Button  variant="contained" color="secondary" onClick={handleOpenClubHint}>Reveal Club</Button>
             <Button  className="ml" variant="contained" color="secondary" onClick={handleOpenPositionHint}>Reveal Position</Button>
           </div>
-          <input hidden ref={searchInput} />
           <h3>{solution && solution[1] ? <Troussardle solution={solution[1]}/>: <Troussardle solution={solution[0]}/>}</h3>
           <div className="clubHint">
             <Modal
