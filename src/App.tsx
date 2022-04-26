@@ -56,7 +56,7 @@ function App() {
   
 
     return (
-      <div className="App" ref={searchInput}>
+      <div className="App">
         <div className="App">
           <h1>Troussardle</h1>
           <div className="row">
@@ -101,8 +101,6 @@ function App() {
         </div>
       </div>
     );
-  
-  
 }
 
 const style = {
