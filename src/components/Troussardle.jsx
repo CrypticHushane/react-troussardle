@@ -15,7 +15,7 @@ export default function Troussardle({ solution }) {
     return (
         <div>
             <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} wordLength={solution?.length} solution={solution}/>
-            <Keypad />
+            <Keypad usedKeys={usedKeys}/>
         </div>
     )
 }
