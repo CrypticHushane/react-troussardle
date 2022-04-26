@@ -104,7 +104,7 @@ const useTroussardle = (solution) => {
       setCurrentGuess(prev => prev.slice(0, -1))
       return
     }
-    if (/^[A-Za-z\-]$/.test(key)) {
+    if (/^[A-Za-z'\-]$/.test(key)) {
       if (currentGuess.length < solution.length) {
         setCurrentGuess(prev => prev + key)
       }
