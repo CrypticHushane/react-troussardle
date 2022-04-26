@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Troussardle from './components/Troussardle';
 import { Player } from './Interface/IPlayer';
@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { isMobile } from 'react-device-detect';
 
 function App() {
   const [club, setClub] = useState<Team>();
@@ -25,6 +26,9 @@ function App() {
   const handleOpenPositionHint = () => setOpenPositionHint(true);
   const handleClosePositionHint = () => setOpenPositionHint(false);
 
+  //Test
+  const searchInput = useRef<any>(null)
+
   useEffect(() => {
     const fetchInfo = async () => {
       const info = await getRandomPlayer();
@@ -35,6 +39,12 @@ function App() {
 
     fetchInfo();
   }, []);
+
+  useEffect(() => {
+    if(isMobile){
+      searchInput?.current?.focus()
+    }
+  },[])
 
   if(!solution){
     return (
@@ -54,6 +64,7 @@ function App() {
             <Button  variant="contained" color="secondary" onClick={handleOpenClubHint}>Reveal Club</Button>
             <Button  className="ml" variant="contained" color="secondary" onClick={handleOpenPositionHint}>Reveal Position</Button>
           </div>
+          <input hidden ref={searchInput} />
           <h3>{solution && solution[1] ? <Troussardle solution={solution[1]}/>: <Troussardle solution={solution[0]}/>}</h3>
           <div className="clubHint">
             <Modal
