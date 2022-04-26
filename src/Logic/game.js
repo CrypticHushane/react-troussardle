@@ -3,7 +3,7 @@ import { useState } from 'react'
 const useTroussardle = (solution) => {
   const [turn, setTurn] = useState(0) 
   const [currentGuess, setCurrentGuess] = useState('')
-  const [guesses, setGuesses] = useState([...Array(7)]) // each guess is an array
+  const [guesses, setGuesses] = useState([...Array(6)]) // each guess is an array
   const [history, setHistory] = useState([]) // each guess is a string
   const [isCorrect, setIsCorrect] = useState(false)
   const [usedKeys, setUsedKeys] = useState({}) // {a: 'grey', b: 'green', c: 'yellow'} etc
@@ -81,16 +81,6 @@ const useTroussardle = (solution) => {
   // if user presses enter, add the new guess
   const handleKeyup = ({ key }) => {
     if (key === 'Enter') {
-      // only add guess if turn is less than 5
-      if (turn > 5) {
-        alert('you used all your guesses!')
-        return
-      }
-
-      if(isCorrect){
-        alert('Yuh already got right enuh')
-        return
-      }
 
       // check word is 5 chars
       if (currentGuess.length !== solution.length) {

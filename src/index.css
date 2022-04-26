@@ -149,3 +149,12 @@ h1 {
     border-color: #333;
   }
 }
+
+.photo {
+  height: 100px;
+  width: 100px; 
+}
+
+.ml {
+  margin-left: 2em !important;
+}
