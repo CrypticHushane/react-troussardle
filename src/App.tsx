@@ -75,8 +75,8 @@ function App() {
       >
         <Box sx={basic}>
           <h1 style={{ color:'white' }}> How To Play Troussardle</h1>
-          <h3>Guess the Troussardle in 6 guesses</h3>
-          <h5>Each guess should be a valid premier footballer's lastname. Hit the enter/return button to submit.</h5>
+          {/* <h3>Guess the Troussardle in 6 guesses</h3>
+          <h5>Each guess should be a valid premier footballer's lastname. Hit the enter/return button to submit.</h5> */}
           <hr />
           <h3>Examples</h3>
           <CorrectPlacement />
@@ -172,7 +172,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 600,
+  width: 400,
   bgcolor: '#212121',
   color: 'white',
   border: '2px solid #000',
