@@ -1478,6 +1478,13 @@
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
+"@mui/icons-material@^5.6.2":
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.6.2.tgz#239c40fc5841dc7c6af7d00e4e988550de170fcd"
+  integrity sha512-9QdI7axKuBAyaGz4mtdi7Uy1j73/thqFmEuxpJHxNC7O8ADEK1Da3t2veK2tgmsXsUlAHcAG63gg+GvWWeQNqQ==
+  dependencies:
+    "@babel/runtime" "^7.17.2"
+
 "@mui/material@^5.6.2":
   version "5.6.2"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.6.2.tgz#bcd0ecdb265aca1bfee11773f6561aeedaa25b45"
@@ -7281,6 +7288,13 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-social-icons@^5.13.0:
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.13.0.tgz#2eb83dc4b843abb0b01c9fc21c7df6d8a58b99a6"
+  integrity sha512-Tfh01p+gugmJJz9Z7trAJVDwYBDIa6M1KYETLLeL0qMM9G7sHX/PcH8xNRq/zP/bMqbOMLEbhfsW8NldjU3KDA==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-transition-group@^4.4.2:
   version "4.4.2"
