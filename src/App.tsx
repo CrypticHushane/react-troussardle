@@ -76,24 +76,20 @@ function App() {
         disableScrollLock
       >
         <Box sx={basic}>
-          <h1 style={{ color:'white' }}> How To Play Troussardle</h1>
+          <h3 style={{ color:'white' }}> How To Play Troussardle</h3>
           <h5>Guess the Troussardle in 6 guesses</h5>
           <h5>Each guess should be a valid premier footballer's lastname. Hit the enter/return button to submit.</h5>
           <hr />
-          <h3>Examples</h3>
+          <h4>Examples</h4>
           <CorrectPlacement />
           <h5>The letter <span className="greeny">S</span> is in the word and in the correct spot.</h5>
           <WrongPlace />
           <h5>The letter <span className="yellowy">N</span> is in the word and in the correct spot.</h5>
-          <InvalidWord />
-          <h5>No letter in this guess is in the correct answer.</h5>
           <hr />
           <div className="row pt">
           <SocialIcon url="https://www.linkedin.com/in/oshane-williams-5384ab1a7/" />
           <p className="space"></p>
           <SocialIcon url="https://github.com/CrypticHushane?tab=repositories" />
-          <p className="space"></p>
-          <SocialIcon url="https://www.premierleague.com/" />
           </div>
           
           { isMobile ? 
