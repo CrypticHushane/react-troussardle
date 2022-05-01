@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Troussardle from './components/Troussardle';
-import Row from './components/Row';
 import { Player } from './Interface/IPlayer';
 import { Team } from './Interface/ITeam';
 import { getRandomPlayer } from './Logic/football';
@@ -11,10 +10,10 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import IconButton from '@mui/material/IconButton';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import CorrectLetter from './examples/CorrectLetter';
 import WrongPlace from './examples/WrongPlace';
 import InvalidWord from './examples/InvalidWord';
 import { SocialIcon } from 'react-social-icons';
+import CorrectPlacement from './examples/CorrectPlacement';
 
 function App() {
   const [club, setClub] = useState<Team>();
@@ -81,7 +80,7 @@ function App() {
           <h5>Each guess should be a valid premier footballer's lastname. Hit the enter/return button to submit.</h5>
           <hr />
           <h3>Examples</h3>
-          <CorrectLetter />
+          <CorrectPlacement />
           <h4>The letter <span className="greeny">S</span> is in the word and in the correct spot.</h4>
           <WrongPlace />
           <h4>The letter <span className="yellowy">N</span> is in the word and in the correct spot.</h4>
