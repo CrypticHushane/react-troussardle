@@ -57,11 +57,13 @@ function App() {
     return (
       <div className="App" id="troussardle" ref={focusDiv}>
         <div className="App">
-          <input type="text" ref={focusDiv}/>
           <h1>Troussardle</h1>
           <div className="row">
             <Button  variant="contained" color="secondary" onClick={handleOpenClubHint}>Reveal Club</Button>
             <Button  className="ml" variant="contained" color="secondary" onClick={handleOpenPositionHint}>Reveal Position</Button>
+          </div>
+          <div className="row pt">
+            <input hidden className="pt" type="text" ref={focusDiv} autoFocus/>
           </div>
           <h3>{solution && solution[1] ? <Troussardle solution={solution[1]}/>: <Troussardle solution={solution[0]}/>}</h3>
           <div className="clubHint">
