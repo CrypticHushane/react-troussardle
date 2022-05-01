@@ -8,7 +8,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { isMobile } from 'react-device-detect';
+import IconButton from '@mui/material/IconButton';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 function App() {
   const [club, setClub] = useState<Team>();
@@ -52,53 +53,67 @@ function App() {
       </div>
     );
   }
+
+  function ClubGuess() {
+    return (
+      <Modal
+        open={openClubHint}
+        onClose={handleCloseClubHint}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        disableAutoFocus
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            The Club This Player plays for is { club?.name }
+          </Typography>
+          <img src={ club?.crestUrl } className="photo pt" alt="logo" />
+        </Box>
+      </Modal>
+    )
+  }
+
+  function PositionGuess(){
+    return (
+      <Modal
+        open={openPositionHint}
+        onClose={handleClosePositionHint}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        disableAutoFocus
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            The Player's position is...
+          </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {player?.position ? player?.position : 'GoalKeeper'} 
+          </Typography>
+        </Box>
+      </Modal>
+    )
+  }
   
 
     return (
       <div className="App" id="troussardle" ref={focusDiv}>
         <div className="App">
-          <h1>Troussardle</h1>
+          <div className="row">
+            <p className="h1">Troussardle</p>
+              <IconButton color="secondary" aria-label="add an alarm" className="space">
+                <HelpOutlineIcon fontSize="large"/>
+              </IconButton>
+          </div>
           <div className="row">
             <Button  variant="contained" color="secondary" onClick={handleOpenClubHint}>Reveal Club</Button>
             <Button  className="ml" variant="contained" color="secondary" onClick={handleOpenPositionHint}>Reveal Position</Button>
           </div>
-          <div className="row pt">
-            <input hidden className="pt" type="text" ref={focusDiv} autoFocus/>
-          </div>
-          <h3>{solution && solution[1] ? <Troussardle solution={solution[1]}/>: <Troussardle solution={solution[0]}/>}</h3>
+          {solution && solution[1] ? <Troussardle solution={solution[1]}/>: <Troussardle solution={solution[0]}/>}
           <div className="clubHint">
-            <Modal
-              open={openClubHint}
-              onClose={handleCloseClubHint}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              disableAutoFocus
-            >
-              <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                  The Club This Player plays for is...
-                </Typography>
-                <img src={club?.crestUrl} className="photo" alt="logo" />
-              </Box>
-            </Modal>
+            <ClubGuess />
           </div>
           <div className="positionHint">
-            <Modal
-              open={openPositionHint}
-              onClose={handleClosePositionHint}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              disableAutoFocus
-            >
-              <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                  The Player's position is...
-                </Typography>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                  {player?.position} 
-                </Typography>
-              </Box>
-            </Modal>
+            <PositionGuess />
           </div>
         </div>
       </div>

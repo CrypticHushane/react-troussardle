@@ -71,6 +71,7 @@ h1 {
   display: inline-block;
   border-radius: 6px;
   line-height: 50px;
+  color:#333 !important
 }
 .keypad > div.green {
   background: #5ac85a;
@@ -115,7 +116,7 @@ h1 {
 @keyframes flip {
   0% {
     transform: rotateX(0);
-    background: #fff;
+    background: #212121;
     border-color: #333;
   }
   45% {
@@ -132,7 +133,8 @@ h1 {
     transform: rotateX(0deg);
     background: var(--background);
     border-color: var(--border-color);
-    color: #eee;
+    color:white;
+    ;
   }
 }
 
@@ -160,5 +162,30 @@ h1 {
 }
 
 .pt {
-  padding-top: 2em !important;
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+}
+
+.fonty {
+  font-size: 25px !important;
+  text-align: center !important;
+  border-radius: 5% !important;
+  background-color: #F7F6FF !important;
+  background: #F7F6FF;
+
+}
+
+.h1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.space {
+  padding-left: 1em !important;
+  padding-right: 1em !important;
 }
