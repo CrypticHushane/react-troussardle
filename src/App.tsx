@@ -72,7 +72,6 @@ function App() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         disableAutoFocus
-        disableScrollLock
       >
         <Box sx={basic}>
           <h1 style={{ color:'white' }}> How To Play Troussardle</h1>
