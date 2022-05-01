@@ -189,3 +189,15 @@ h1 {
   padding-left: 1em !important;
   padding-right: 1em !important;
 }
+
+.greeny {
+  color: #5ac85a;
+}
+
+.yellowy {
+  color: #e2cc68;
+}
+
+.wrong {
+  color: #a1a1a1;
+}

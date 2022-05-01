@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Troussardle from './components/Troussardle';
+import Row from './components/Row';
 import { Player } from './Interface/IPlayer';
 import { Team } from './Interface/ITeam';
 import { getRandomPlayer } from './Logic/football';
@@ -10,6 +11,10 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import IconButton from '@mui/material/IconButton';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import CorrectLetter from './examples/CorrectLetter';
+import WrongPlace from './examples/WrongPlace';
+import InvalidWord from './examples/InvalidWord';
+import { SocialIcon } from 'react-social-icons';
 
 function App() {
   const [club, setClub] = useState<Team>();
@@ -26,6 +31,12 @@ function App() {
   const [openPositionHint, setOpenPositionHint] = React.useState(false);
   const handleOpenPositionHint = () => setOpenPositionHint(true);
   const handleClosePositionHint = () => setOpenPositionHint(false);
+
+  // Handles the How To Help Modal
+  const [showHowToHelp, setShowHowToHelp] = React.useState(false);
+  const openHelpModal = () => setShowHowToHelp(true);
+  const closeHelpModal = () => setShowHowToHelp(false);
+
 
   //Test
   const focusDiv = useRef<any>();
@@ -54,6 +65,41 @@ function App() {
     );
   }
 
+  function HowToHelpModal(){
+    return (
+      <Modal
+        open={showHowToHelp}
+        onClose={closeHelpModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        disableAutoFocus
+        disableScrollLock
+      >
+        <Box sx={style}>
+          <h1 style={{ color:'white' }}> How To Play Troussardle</h1>
+          <h3>Guess the Troussardle in 6 guesses</h3>
+          <h5>Each guess should be a valid premier footballer's lastname. Hit the enter/return button to submit.</h5>
+          <hr />
+          <h3>Examples</h3>
+          <CorrectLetter />
+          <h4>The letter <span className="greeny">S</span> is in the word and in the correct spot.</h4>
+          <WrongPlace />
+          <h4>The letter <span className="yellowy">N</span> is in the word and in the correct spot.</h4>
+          <InvalidWord />
+          <h4>No letter in this guess is in the correct answer.</h4>
+          <hr />
+          <div className="row pt">
+          <SocialIcon url="https://www.linkedin.com/in/oshane-williams-5384ab1a7/" />
+          <p className="space"></p>
+          <SocialIcon url="https://github.com/CrypticHushane?tab=repositories" />
+          <p className="space"></p>
+          <SocialIcon url="https://www.premierleague.com/" />
+          </div>
+        </Box>
+      </Modal>
+    )
+  }
+
   function ClubGuess() {
     return (
       <Modal
@@ -63,7 +109,7 @@ function App() {
         aria-describedby="modal-modal-description"
         disableAutoFocus
       >
-        <Box sx={style}>
+        <Box sx={basic}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             The Club This Player plays for is { club?.name }
           </Typography>
@@ -82,7 +128,7 @@ function App() {
         aria-describedby="modal-modal-description"
         disableAutoFocus
       >
-        <Box sx={style}>
+        <Box sx={basic}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             The Player's position is...
           </Typography>
@@ -100,7 +146,7 @@ function App() {
         <div className="App">
           <div className="row">
             <p className="h1">Troussardle</p>
-              <IconButton color="secondary" aria-label="add an alarm" className="space">
+              <IconButton color="secondary" aria-label="add an alarm" className="space" onClick={openHelpModal}>
                 <HelpOutlineIcon fontSize="large"/>
               </IconButton>
           </div>
@@ -115,6 +161,9 @@ function App() {
           <div className="positionHint">
             <PositionGuess />
           </div>
+          <div>
+            <HowToHelpModal />
+          </div>
         </div>
       </div>
     );
@@ -125,8 +174,23 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  width: 600,
+  bgcolor: '#212121',
+  color: 'white',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  borderRadius: '15px'
+};
+
+const basic = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: '#212121',
+  color: 'white',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
