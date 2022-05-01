@@ -83,7 +83,7 @@ function App() {
           <CorrectPlacement />
           <h4>The letter <span className="greeny">S</span> is in the word and in the correct spot.</h4>
           <WrongPlace />
-          <h4>The letter <span className="yellowy">N</span> is in the word and in the correct spot.</h4>
+          <h4>The letter <span className="yellowy">N</span> is in the word but not the correct spot.</h4>
           <InvalidWord />
           <h4>No letter in this guess is in the correct answer.</h4>
           <hr />
