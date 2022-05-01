@@ -57,6 +57,7 @@ function App() {
     return (
       <div className="App" id="troussardle" ref={focusDiv}>
         <div className="App">
+          <input type="text" hidden ref={focusDiv}/>
           <h1>Troussardle</h1>
           <div className="row">
             <Button  variant="contained" color="secondary" onClick={handleOpenClubHint}>Reveal Club</Button>
