@@ -27,7 +27,7 @@ function App() {
   const handleClosePositionHint = () => setOpenPositionHint(false);
 
   //Test
-  const searchInput = useRef<any>(null)
+  const focusDiv = useRef<any>();
 
   useEffect(() => {
     const fetchInfo = async () => {
@@ -41,10 +41,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(isMobile){
-      searchInput?.current?.focus()
-    }
-  },[])
+    document.getElementById("troussardle")?.focus();
+    if(focusDiv.current) focusDiv.current.focus();
+  },[focusDiv])
 
   if(!solution){
     return (
@@ -56,7 +55,7 @@ function App() {
   
 
     return (
-      <div className="App">
+      <div className="App" id="troussardle" ref={focusDiv}>
         <div className="App">
           <h1>Troussardle</h1>
           <div className="row">

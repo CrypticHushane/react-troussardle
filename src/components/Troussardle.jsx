@@ -10,6 +10,7 @@ export default function Troussardle({ solution }) {
 
     useEffect(() => {
         window.addEventListener('keyup', handleKeyup)
+        document.getElementById("troussardle").focus();
 
         if(isCorrect) {
             setTimeout(() => setShowModal(true), 2000)
