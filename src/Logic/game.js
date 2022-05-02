@@ -84,7 +84,7 @@ const useTroussardle = (solution) => {
 
       // check word is 5 chars
       if (currentGuess.length !== solution.length) {
-        alert(`word must be ${solution.length} chars.`)
+        alert(`word must be ${solution.length} chars. Word: ${currentGuess}`)
         return
       }
       const formatted = formatGuess()
