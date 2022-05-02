@@ -80,7 +80,7 @@ const useTroussardle = (solution) => {
   // handle keyup event & track current guess
   // if user presses enter, add the new guess
   const handleKeyup = ({ key }) => {
-    if (key === 'Enter' || key === 'Done') {
+    if (key === 'Enter' || key === 'Done' || key === 'Go') {
 
       // check word is 5 chars
       if (currentGuess.length !== solution.length) {
