@@ -29,7 +29,7 @@ export default function Troussardle({ solution }) {
     return (
         <div>
             <div className="pt">
-                <input  className="fonty" type="text" placeholder="Type Guess Here" value={currentGuess} defaultValue={currentGuess}/>
+                <input  className="fonty" type="text" placeholder="Type Guess Here" defaultValue={currentGuess}/>
             </div>
             <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} wordLength={solution?.length} solution={solution}/>
             <Keypad usedKeys={usedKeys}/>
