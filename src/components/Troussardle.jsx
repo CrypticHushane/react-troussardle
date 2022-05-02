@@ -3,7 +3,7 @@ import useTroussardle from '../Logic/game'
 import Grid from './Grid';
 import Keypad from './Keypad';
 import Modal from './Modal';
-import { isMobile } from 'react-device-detect';
+import { isAndroid, isMobile } from 'react-device-detect';
 
 export default function Troussardle({ solution }) {
     const { turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup } = useTroussardle(solution?.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""));
@@ -11,25 +11,46 @@ export default function Troussardle({ solution }) {
 
     useEffect(() => {
         window.addEventListener('keyup', handleKeyup)
-        document.getElementById("troussardle").focus();
+        
+        if(!isAndroid){
+            window.addEventListener('keyup', handleKeyup)
 
-        if(isCorrect) {
-            setTimeout(() => setShowModal(true), 2000)
-            window.removeEventListener('keyup', handleKeyup)
+            if(isCorrect) {
+                setTimeout(() => setShowModal(true), 2000)
+                window.removeEventListener('keyup', handleKeyup)
+            }
+    
+            if(turn >= 6) {
+                setTimeout(() => setShowModal(true), 2000)
+                window.removeEventListener('keyup', handleKeyup)
+            }
+    
+            return () => window.removeEventListener('keyup', handleKeyup)
+        }else{
+            const dom = document.getElementById("root");
+
+            dom.addEventListener('keyup', handleKeyup)
+
+            if(isCorrect) {
+                setTimeout(() => setShowModal(true), 2000)
+                dom.removeEventListener('keyup', handleKeyup)
+            }
+    
+            if(turn >= 6) {
+                setTimeout(() => setShowModal(true), 2000)
+                dom.removeEventListener('keyup', handleKeyup)
+            }
+    
+            return () => dom.removeEventListener('keyup', handleKeyup)
         }
 
-        if(turn >= 6) {
-            setTimeout(() => setShowModal(true), 2000)
-            window.removeEventListener('keyup', handleKeyup)
-        }
-
-        return () => window.removeEventListener('keyup', handleKeyup)
+        
     }, [handleKeyup, isCorrect, turn])
 
     return (
         <div>
             <div className="pt">
-                <input id="troussardle"  className="fonty" type="text" placeholder="Type Guess Here" defaultValue={currentGuess} onChange={() => currentGuess}/>
+                <input hidden={isMobile ? false : true} id="troussardle"  className="fonty" type="text" placeholder="Type Guess Here" defaultValue={currentGuess} onChange={() => currentGuess}/>
             </div>
             <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} wordLength={solution?.length} solution={solution}/>
             <Keypad usedKeys={usedKeys}/>
