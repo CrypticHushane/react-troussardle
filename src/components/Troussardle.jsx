@@ -27,21 +27,21 @@ export default function Troussardle({ solution }) {
     
             return () => window.removeEventListener('keyup', handleKeyup)
         }else{
-            const dom = document.getElementById("root");
+            const dom = document.getElementById("guess");
 
-            dom.addEventListener('keyup', handleKeyup)
+            dom.addEventListener('input', handleKeyup)
 
             if(isCorrect) {
                 setTimeout(() => setShowModal(true), 2000)
-                dom.removeEventListener('keyup', handleKeyup)
+                dom.removeEventListener('input', handleKeyup)
             }
     
             if(turn >= 6) {
                 setTimeout(() => setShowModal(true), 2000)
-                dom.removeEventListener('keyup', handleKeyup)
+                dom.removeEventListener('input', handleKeyup)
             }
     
-            return () => dom.removeEventListener('keyup', handleKeyup)
+            return () => dom.removeEventListener('input', handleKeyup)
         }
 
         
@@ -50,7 +50,7 @@ export default function Troussardle({ solution }) {
     return (
         <div>
             <div className="pt">
-                <input hidden={isMobile ? false : true} id="troussardle"  className="fonty" type="text" placeholder="Type Guess Here" defaultValue={currentGuess} onChange={() => currentGuess}/>
+                <input hidden={isMobile ? false : true} id="guess"  className="fonty" type="text" placeholder="Type Guess Here" defaultValue={currentGuess} onChange={() => currentGuess}/>
             </div>
             <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} wordLength={solution?.length} solution={solution}/>
             <Keypad usedKeys={usedKeys}/>
