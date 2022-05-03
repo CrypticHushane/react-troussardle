@@ -37,24 +37,21 @@ export default function Troussardle({ solution }) {
 
             if(isCorrect) {
                 setTimeout(() => setShowModal(true), 2000)
-                dom.removeEventListener('input', function(){
-                    event.key = this.value.substr(-1).charCodeAt(0);;
-                    handleKeyup(event)
-                })
+                // dom.removeEventListener('input', function(){
+                //     event.key = this.value.substr(-1).charCodeAt(0);;
+                //     handleKeyup(event)
+                // })
             }
     
             if(turn >= 6) {
                 setTimeout(() => setShowModal(true), 2000)
-                dom.removeEventListener('input', function(){
-                    event.key = this.value.substr(-1).charCodeAt(0);;
-                    handleKeyup(event)
-                })
+                // dom.removeEventListener('input', function(){
+                //     event.key = this.value.substr(-1).charCodeAt(0);;
+                //     handleKeyup(event)
+                // })
             }
     
-            return () => dom.removeEventListener('input', function(){
-                event.key = this.value;
-                handleKeyup(event)
-            })
+            return () => window.removeEventListener('input', handleKeyup)
         }
 
         
