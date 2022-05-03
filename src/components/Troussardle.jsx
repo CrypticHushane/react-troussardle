@@ -28,20 +28,21 @@ export default function Troussardle({ solution }) {
             return () => window.removeEventListener('keyup', handleKeyup)
         }else{
             const dom = document.getElementById("guess");
-
-            dom.addEventListener('input', handleKeyup)
+            const event = {key:null};
+            
+            dom.addEventListener('input', handleKeyup(this.value))
 
             if(isCorrect) {
                 setTimeout(() => setShowModal(true), 2000)
-                dom.removeEventListener('input', handleKeyup)
+                dom.removeEventListener('input', handleKeyup(this.value))
             }
     
             if(turn >= 6) {
                 setTimeout(() => setShowModal(true), 2000)
-                dom.removeEventListener('input', handleKeyup)
+                dom.removeEventListener('input', handleKeyup(this.value))
             }
     
-            return () => dom.removeEventListener('input', handleKeyup)
+            return () => dom.removeEventListener('input', handleKeyup(this.value))
         }
 
         
